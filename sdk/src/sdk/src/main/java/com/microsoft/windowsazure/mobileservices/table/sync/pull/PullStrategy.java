@@ -12,7 +12,7 @@ import com.microsoft.windowsazure.mobileservices.table.query.QueryOrder;
 public class PullStrategy {
 
     int defaultTop = 50;
-
+    int QueryTop;
     Query query;
     MobileServiceJsonTable table;
     int totalRead; // used to track how many we have read so far since the last delta
@@ -29,10 +29,10 @@ public class PullStrategy {
         query.removeInlineCount();
         query.removeProjection();
 
-        if (this.query.getTop() == 0) {
-            this.query.top(defaultTop);
+         if (this.query.getTop() == 0) {
+            QueryTop=defaultTop;
         } else {
-            this.query.top(Math.min(this.query.getTop(), defaultTop));
+            QueryTop=this.query.getTop();
         }
 
         if (query.getOrderBy().size() == 0) {
