@@ -163,7 +163,7 @@ public class IncrementalPullStrategy extends PullStrategy {
             }
         }
 
-        this.query.top(defaultTop);
+       this.query.top(QueryTop);
 
         this.query.getOrderBy().clear();
 
